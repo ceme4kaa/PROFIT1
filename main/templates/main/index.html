@@ -1,0 +1,448 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- SEO базовые мета-теги -->
+    <meta charset="UTF-8">
+    <title>PROFIT – Bus Repair Parts Service | Автозапчасти для автобусов в Астане</title>
+    <meta name="description" content="PROFIT – поставка оригинальных и аналоговых автозапчастей для автобусов в Астане. Быстрая поставка, доступные цены, консультация специалистов.">
+    <meta name="keywords" content="автозапчасти для автобусов Астана, Yutong, Iveco, King Long, Golden Dragon, Higer, PROFIT Bus Repair Parts Service">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PROFIT – Bus Repair Parts Service">
+    <meta property="og:description" content="Автозапчасти для автобусов в Астане. Оригинальные и аналоговые запчасти, быстрая поставка, консультация специалистов.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'main/images/favicon.jpg' %}" type="image/x-icon">
+
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+
+<!-- Навигация -->
+<header class="main-header fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent px-3">
+        <a class="navbar-brand d-flex align-items-center" href="#hero">
+            <img src="{% static 'main/images/logo.jpg' %}" alt="PROFIT Logo" class="logo me-2">
+            <span class="brand-text">PROFIT</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Переключить навигацию">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="#about">О компании</a></li>
+                <li class="nav-item"><a class="nav-link" href="#advantages">Преимущества</a></li>
+                <li class="nav-item"><a class="nav-link" href="#brands">Марки автобусов</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
+                <li class="nav-item ms-lg-3">
+                    <a class="btn btn-primary btn-sm contact-btn" href="#contacts">Связаться</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section id="hero" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6 reveal">
+                    <div class="hero-label mb-3">
+                        PROFIT – Bus Repair Parts Service
+                    </div>
+                    <h1 class="hero-title mb-3">
+                        Автозапчасти для автобусов в Астане
+                    </h1>
+                    <p class="hero-subtitle mb-4">
+                        Поставляем оригинальные и аналоговые запчасти для городских, туристических и междугородних
+                        автобусов. Подберём решение под ваш парк и сроки простоя.
+                    </p>
+                    <div class="hero-actions d-flex flex-wrap align-items-center gap-3">
+                        <a href="#contacts" class="btn btn-primary btn-lg">
+                            Связаться с нами
+                        </a>
+                        <a href="tel:+77000000000" class="btn btn-outline-light btn-lg">
+                            Позвонить
+                        </a>
+                    </div>
+                    <div class="hero-note mt-3">
+                        Астана, Казахстан • Оперативный подбор и поставка запчастей
+                    </div>
+                </div>
+                <div class="col-lg-6 reveal delay-1">
+                    <div class="hero-card position-relative">
+                        <div class="hero-card-bg"></div>
+                        <div class="hero-card-content">
+                            <div class="hero-icon">
+                                <i class="bi bi-bus-front"></i>
+                            </div>
+                            <h2 class="hero-card-title">Bus Repair Parts Service</h2>
+                            <p class="hero-card-text">
+                                Комплексные поставки запчастей для автобусов марок Yutong, Iveco, King Long,
+                                Golden Dragon, Higer и других производителей.
+                            </p>
+                            <ul class="hero-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Работа с оптовыми и розничными клиентами</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Подбор по VIN и каталожным номерам</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Индивидуальные условия для автопарков</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Декоративные акценты -->
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        <div class="hero-shape hero-shape-3"></div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about" class="section-padding bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8 text-center reveal">
+                    <h2 class="section-title">О компании PROFIT</h2>
+                    <p class="section-subtitle">
+                        PROFIT – Bus Repair Parts Service специализируется на поставке автозапчастей для
+                        городских и междугородних автобусов в Астане и по всему Казахстану.
+                    </p>
+                </div>
+            </div>
+            <div class="row align-items-center gy-4">
+                <div class="col-md-6 reveal">
+                    <p class="about-text">
+                        Мы работаем напрямую с проверенными поставщиками и производителями, что позволяет
+                        предлагать как оригинальные, так и качественные аналоговые запчасти. Наши специалисты помогут
+                        подобрать компоненты под конкретную модель автобуса с учётом условий эксплуатации и бюджета.
+                    </p>
+                    <p class="about-text">
+                        В фокусе PROFIT – минимизация простоя техники и обеспечение надёжной работы вашего
+                        автопарка. Мы ценим время клиентов и предлагаем прозрачные условия сотрудничества.
+                    </p>
+                </div>
+                <div class="col-md-6 reveal delay-1">
+                    <div class="about-highlight">
+                        <div class="about-highlight-item">
+                            <span class="about-number">10+</span>
+                            <span class="about-label">лет в сфере<br>автозапчастей</span>
+                        </div>
+                        <div class="about-highlight-item">
+                            <span class="about-number">5+</span>
+                            <span class="about-label">ключевых марок<br>автобусов</span>
+                        </div>
+                        <div class="about-highlight-item">
+                            <span class="about-number">24/7</span>
+                            <span class="about-label">поддержка<br>по заявкам</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="advantages" class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8 text-center reveal">
+                    <h2 class="section-title">Почему PROFIT</h2>
+                    <p class="section-subtitle">
+                        Мы соединяем надёжность поставок, экспертный подход и прозрачные условия сотрудничества.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 reveal">
+                    <div class="adv-card">
+                        <div class="adv-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3 class="adv-title">Оригинальные и аналоговые запчасти</h3>
+                        <p class="adv-text">
+                            Поставляем оригинальные детали и проверенные аналоги с гарантией качества и происхождения.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal delay-1">
+                    <div class="adv-card">
+                        <div class="adv-icon">
+                            <i class="bi bi-calendar2-check"></i>
+                        </div>
+                        <h3 class="adv-title">Быстрая поставка</h3>
+                        <p class="adv-text">
+                            Оперативная обработка заявок и оптимальные сроки доставки по Астане и регионам Казахстана.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal delay-2">
+                    <div class="adv-card">
+                        <div class="adv-icon">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <h3 class="adv-title">Доступные цены</h3>
+                        <p class="adv-text">
+                            Конкурентные цены за счёт прямых поставок и гибкие условия для постоянных клиентов.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal delay-3">
+                    <div class="adv-card">
+                        <div class="adv-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3 class="adv-title">Консультация специалистов</h3>
+                        <p class="adv-text">
+                            Профессиональная техническая поддержка и помощь в подборе запчастей под конкретные задачи.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Марки автобусов -->
+    <section id="brands" class="section-padding bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center reveal">
+                <h2 class="section-title">Запчасти для автобусов марок</h2>
+                <p class="section-subtitle">
+                    Подбираем и поставляем запчасти для популярных марок городских и туристических автобусов.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-3 justify-content-center brands-grid">
+            <div class="col-6 col-md-4 col-lg-2 reveal">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/yutong.png' %}"
+                         alt="Yutong" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-1">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/iveco.png' %}"
+                         alt="Iveco" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-2">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/wabco.png' %}"
+                         alt="Wabco" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-3">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/febi.png' %}"
+                         alt="febi" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-4">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/mecdiesel.png' %}"
+                         alt="Mec Diesel" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-5">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/meritor.png' %}"
+                         alt="Meritor" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-6">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/lema.png' %}"
+                         alt="Lema" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-7">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/dayco.png' %}"
+                         alt="Dayco" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-8">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/kolbenschmidt.png' %}"
+                         alt="Kolbenschmidt" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-9">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/sachs.png' %}"
+                         alt="Sachs" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-10">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/webasto.png' %}"
+                         alt="Webasto" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-11">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/voith.png' %}"
+                         alt="Voith" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-12">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/allison.png' %}"
+                         alt="Allison" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-13">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/cnhi.png' %}"
+                         alt="Cnhi" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-14">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/vaden.png' %}"
+                         alt="Vaden" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-15">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/tttauto.png' %}"
+                         alt="Tttauto" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-16">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/mannfilter.png' %}"
+                         alt="Mannfilter" class="brand-logo">
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 reveal delay-17">
+                <div class="brand-card">
+                    <img src="{% static 'main/images/brands/sfh.png' %}"
+                         alt="Sfh" class="brand-logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="section-padding contacts-section">
+        <div class="container">
+            <div class="row gy-4 align-items-stretch">
+                <div class="col-lg-5 reveal">
+                    <h2 class="section-title mb-3">Контакты</h2>
+                    <p class="section-subtitle mb-4">
+                        Свяжитесь с нами удобным для вас способом — мы быстро подберём запчасти и ответим на ваши вопросы.
+                    </p>
+
+                    <ul class="contact-list">
+                        <li>
+                            <i class="bi bi-geo-alt"></i>
+                            <div>
+                                <span class="contact-label">Адрес</span>
+                                <span class="contact-value">Астана, Казахстан</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone"></i>
+                            <div>
+                                <span class="contact-label">Телефон</span>
+                                <a class="contact-value" href="tel:+77055165177">+7 (705) 516-51-77</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="bi bi-whatsapp"></i>
+                            <div>
+                                <span class="contact-label">WhatsApp</span>
+                                <!-- Замените номер на актуальный в формате 77XXXXXXXXX -->
+                                <a class="contact-value"
+                                   href="https://wa.me/77055165177"
+                                   target="_blank" rel="noopener">
+                                    Написать в WhatsApp
+                                </a>
+                            </div>
+                        </li>
+                        <!-- НОВЫЙ ПУНКТ: WeChat -->
+                        <li>
+                            <i class="bi bi-chat-dots"></i>
+                            <div>
+                                <span class="contact-label">WeChat</span>
+                                <!-- Замените your_wechat_id на реальный ID -->
+                                <span class="contact-value">ID: your_wechat_id</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope"></i>
+                            <div>
+                                <span class="contact-label">Email</span>
+                                <a class="contact-value" href="mailto:info@profit-bus.kz">info@profit-bus.kz</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="tel:+77055165177" class="btn btn-primary btn-lg">
+                            Позвонить
+                        </a>
+                        <a href="https://wa.me/77055165177" target="_blank" rel="noopener"
+                           class="btn btn-outline-light btn-lg">
+                            Написать в WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal delay-1">
+                    <div class="map-wrapper">
+                        <!-- Пример iframe карты Астаны. Можно заменить на ваш embed-код из Google Maps -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d625.2133369441602!2d71.47065126968666!3d51.18492583885016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTHCsDExJzA1LjciTiA3McKwMjgnMTYuNyJF!5e0!3m2!1sru!2skz!4v1770986537520!5m2!1sru!2skz"
+                            width="750" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container text-center">
+        <span class="footer-text">
+            © 2026 PROFIT – Bus Repair Parts Service. Все права защищены.
+        </span>
+    </div>
+</footer>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+<!-- Custom JS -->
+<script src="{% static 'main/js/script.js' %}"></script>
+</body>
+</html>
