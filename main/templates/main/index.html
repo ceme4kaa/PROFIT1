@@ -1,19 +1,19 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ html_lang }}">
 <head>
     <!-- SEO базовые мета-теги -->
     <meta charset="UTF-8">
-    <title>PROFIT – Bus Repair Parts Service | Автозапчасти для автобусов в Астане</title>
-    <meta name="description" content="PROFIT – поставка оригинальных и аналоговых автозапчастей для автобусов в Астане. Быстрая поставка, доступные цены, консультация специалистов.">
-    <meta name="keywords" content="автозапчасти для автобусов Астана, Yutong, Iveco, King Long, Golden Dragon, Higer, PROFIT Bus Repair Parts Service">
+    <title>{{ tr.meta_title }}</title>
+    <meta name="description" content="{{ tr.meta_description }}">
+    <meta name="keywords" content="{{ tr.meta_keywords }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="PROFIT – Bus Repair Parts Service">
-    <meta property="og:description" content="Автозапчасти для автобусов в Астане. Оригинальные и аналоговые запчасти, быстрая поставка, консультация специалистов.">
+    <meta property="og:title" content="{{ tr.og_title }}">
+    <meta property="og:description" content="{{ tr.og_description }}">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale" content="{{ og_locale }}">
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'main/images/favicon.jpg' %}" type="image/x-icon">
@@ -34,6 +34,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
 </head>
 <body>
 
@@ -52,12 +54,26 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav align-items-lg-center">
-                <li class="nav-item"><a class="nav-link" href="#about">О компании</a></li>
-                <li class="nav-item"><a class="nav-link" href="#advantages">Преимущества</a></li>
-                <li class="nav-item"><a class="nav-link" href="#brands">Марки автобусов</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">{{ tr.nav_about }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="#advantages">{{ tr.nav_advantages }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacts">{{ tr.nav_contacts }}</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ tr.lang_label }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        {% for item in lang_switch %}
+                            <li>
+                                <a class="dropdown-item {% if lang == item.code %}active{% endif %}" href="/{{ item.code }}/">
+                                    {{ item.label }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
                 <li class="nav-item ms-lg-3">
-                    <a class="btn btn-primary btn-sm contact-btn" href="#contacts">Связаться</a>
+                    <a class="btn btn-primary btn-sm contact-btn" href="#contacts">{{ tr.nav_contact_btn }}</a>
                 </li>
             </ul>
         </div>
@@ -71,25 +87,24 @@
             <div class="row align-items-center gy-4">
                 <div class="col-lg-6 reveal">
                     <div class="hero-label mb-3">
-                        PROFIT – Bus Repair Parts Service
+                        {{ tr.hero_label }}
                     </div>
                     <h1 class="hero-title mb-3">
-                        Автозапчасти для автобусов в Астане
+                        {{ tr.hero_title }}
                     </h1>
                     <p class="hero-subtitle mb-4">
-                        Поставляем оригинальные и аналоговые запчасти для городских, туристических и междугородних
-                        автобусов. Подберём решение под ваш парк и сроки простоя.
+                        {{ tr.hero_subtitle }}
                     </p>
                     <div class="hero-actions d-flex flex-wrap align-items-center gap-3">
                         <a href="#contacts" class="btn btn-primary btn-lg">
-                            Связаться с нами
+                            {{ tr.hero_btn_contact }}
                         </a>
                         <a href="tel:+77000000000" class="btn btn-outline-light btn-lg">
-                            Позвонить
+                            {{ tr.hero_btn_call }}
                         </a>
                     </div>
                     <div class="hero-note mt-3">
-                        Астана, Казахстан • Оперативный подбор и поставка запчастей
+                        {{ tr.hero_note }}
                     </div>
                 </div>
                 <div class="col-lg-6 reveal delay-1">
@@ -99,15 +114,14 @@
                             <div class="hero-icon">
                                 <i class="bi bi-bus-front"></i>
                             </div>
-                            <h2 class="hero-card-title">Bus Repair Parts Service</h2>
+                            <h2 class="hero-card-title">{{ tr.hero_card_title }}</h2>
                             <p class="hero-card-text">
-                                Комплексные поставки запчастей для автобусов марок Yutong, Iveco, King Long,
-                                Golden Dragon, Higer и других производителей.
+                                {{ tr.hero_card_text }}
                             </p>
                             <ul class="hero-list">
-                                <li><i class="bi bi-check-circle-fill"></i> Работа с оптовыми и розничными клиентами</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Подбор по VIN и каталожным номерам</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Индивидуальные условия для автопарков</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {{ tr.hero_list_1 }}</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {{ tr.hero_list_2 }}</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {{ tr.hero_list_3 }}</li>
                             </ul>
                         </div>
                     </div>
@@ -125,38 +139,34 @@
         <div class="container">
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-8 text-center reveal">
-                    <h2 class="section-title">О компании PROFIT</h2>
+                    <h2 class="section-title">{{ tr.about_title }}</h2>
                     <p class="section-subtitle">
-                        PROFIT – Bus Repair Parts Service специализируется на поставке автозапчастей для
-                        городских и междугородних автобусов в Астане и по всему Казахстану.
+                        {{ tr.about_subtitle }}
                     </p>
                 </div>
             </div>
             <div class="row align-items-center gy-4">
                 <div class="col-md-6 reveal">
                     <p class="about-text">
-                        Мы работаем напрямую с проверенными поставщиками и производителями, что позволяет
-                        предлагать как оригинальные, так и качественные аналоговые запчасти. Наши специалисты помогут
-                        подобрать компоненты под конкретную модель автобуса с учётом условий эксплуатации и бюджета.
+                        {{ tr.about_p1 }}
                     </p>
                     <p class="about-text">
-                        В фокусе PROFIT – минимизация простоя техники и обеспечение надёжной работы вашего
-                        автопарка. Мы ценим время клиентов и предлагаем прозрачные условия сотрудничества.
+                        {{ tr.about_p2 }}
                     </p>
                 </div>
                 <div class="col-md-6 reveal delay-1">
                     <div class="about-highlight">
                         <div class="about-highlight-item">
                             <span class="about-number">10+</span>
-                            <span class="about-label">лет в сфере<br>автозапчастей</span>
+                            <span class="about-label">{{ tr.about_metric_1|safe }}</span>
                         </div>
                         <div class="about-highlight-item">
                             <span class="about-number">5+</span>
-                            <span class="about-label">ключевых марок<br>автобусов</span>
+                            <span class="about-label">{{ tr.about_metric_2|safe }}</span>
                         </div>
                         <div class="about-highlight-item">
                             <span class="about-number">24/7</span>
-                            <span class="about-label">поддержка<br>по заявкам</span>
+                            <span class="about-label">{{ tr.about_metric_3|safe }}</span>
                         </div>
                     </div>
                 </div>
@@ -169,9 +179,9 @@
         <div class="container">
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-8 text-center reveal">
-                    <h2 class="section-title">Почему PROFIT</h2>
+                    <h2 class="section-title">{{ tr.adv_title }}</h2>
                     <p class="section-subtitle">
-                        Мы соединяем надёжность поставок, экспертный подход и прозрачные условия сотрудничества.
+                        {{ tr.adv_subtitle }}
                     </p>
                 </div>
             </div>
@@ -181,9 +191,9 @@
                         <div class="adv-icon">
                             <i class="bi bi-shield-check"></i>
                         </div>
-                        <h3 class="adv-title">Оригинальные и аналоговые запчасти</h3>
+                        <h3 class="adv-title">{{ tr.adv_1_title }}</h3>
                         <p class="adv-text">
-                            Поставляем оригинальные детали и проверенные аналоги с гарантией качества и происхождения.
+                            {{ tr.adv_1_text }}
                         </p>
                     </div>
                 </div>
@@ -192,9 +202,9 @@
                         <div class="adv-icon">
                             <i class="bi bi-calendar2-check"></i>
                         </div>
-                        <h3 class="adv-title">Быстрая поставка</h3>
+                        <h3 class="adv-title">{{ tr.adv_2_title }}</h3>
                         <p class="adv-text">
-                            Оперативная обработка заявок и оптимальные сроки доставки по Астане и регионам Казахстана.
+                            {{ tr.adv_2_text }}
                         </p>
                     </div>
                 </div>
@@ -203,9 +213,9 @@
                         <div class="adv-icon">
                             <i class="bi bi-currency-dollar"></i>
                         </div>
-                        <h3 class="adv-title">Доступные цены</h3>
+                        <h3 class="adv-title">{{ tr.adv_3_title }}</h3>
                         <p class="adv-text">
-                            Конкурентные цены за счёт прямых поставок и гибкие условия для постоянных клиентов.
+                            {{ tr.adv_3_text }}
                         </p>
                     </div>
                 </div>
@@ -214,9 +224,9 @@
                         <div class="adv-icon">
                             <i class="bi bi-people"></i>
                         </div>
-                        <h3 class="adv-title">Консультация специалистов</h3>
+                        <h3 class="adv-title">{{ tr.adv_4_title }}</h3>
                         <p class="adv-text">
-                            Профессиональная техническая поддержка и помощь в подборе запчастей под конкретные задачи.
+                            {{ tr.adv_4_text }}
                         </p>
                     </div>
                 </div>
@@ -224,165 +234,45 @@
         </div>
     </section>
 
-    <!-- Марки автобусов -->
-    <section id="brands" class="section-padding bg-light">
-    <div class="container">
-        <div class="row justify-content-center mb-4">
-            <div class="col-lg-8 text-center reveal">
-                <h2 class="section-title">Запчасти для автобусов марок</h2>
-                <p class="section-subtitle">
-                    Подбираем и поставляем запчасти для популярных марок городских и туристических автобусов.
-                </p>
-            </div>
-        </div>
-
-        <div class="row g-3 justify-content-center brands-grid">
-            <div class="col-6 col-md-4 col-lg-2 reveal">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/yutong.png' %}"
-                         alt="Yutong" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-1">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/iveco.png' %}"
-                         alt="Iveco" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-2">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/wabco.png' %}"
-                         alt="Wabco" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-3">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/febi.png' %}"
-                         alt="febi" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-4">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/mecdiesel.png' %}"
-                         alt="Mec Diesel" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-5">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/meritor.png' %}"
-                         alt="Meritor" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-6">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/lema.png' %}"
-                         alt="Lema" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-7">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/dayco.png' %}"
-                         alt="Dayco" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-8">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/kolbenschmidt.png' %}"
-                         alt="Kolbenschmidt" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-9">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/sachs.png' %}"
-                         alt="Sachs" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-10">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/webasto.png' %}"
-                         alt="Webasto" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-11">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/voith.png' %}"
-                         alt="Voith" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-12">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/allison.png' %}"
-                         alt="Allison" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-13">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/cnhi.png' %}"
-                         alt="Cnhi" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-14">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/vaden.png' %}"
-                         alt="Vaden" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-15">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/tttauto.png' %}"
-                         alt="Tttauto" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-16">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/mannfilter.png' %}"
-                         alt="Mannfilter" class="brand-logo">
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 reveal delay-17">
-                <div class="brand-card">
-                    <img src="{% static 'main/images/brands/sfh.png' %}"
-                         alt="Sfh" class="brand-logo">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
     <!-- Контакты -->
     <section id="contacts" class="section-padding contacts-section">
         <div class="container">
             <div class="row gy-4 align-items-stretch">
                 <div class="col-lg-5 reveal">
-                    <h2 class="section-title mb-3">Контакты</h2>
+                    <h2 class="section-title mb-3">{{ tr.contacts_title }}</h2>
                     <p class="section-subtitle mb-4">
-                        Свяжитесь с нами удобным для вас способом — мы быстро подберём запчасти и ответим на ваши вопросы.
+                        {{ tr.contacts_subtitle }}
                     </p>
 
                     <ul class="contact-list">
                         <li>
                             <i class="bi bi-geo-alt"></i>
                             <div>
-                                <span class="contact-label">Адрес</span>
-                                <span class="contact-value">Астана, Казахстан</span>
+                                <span class="contact-label">{{ tr.label_address }}</span>
+                                <span class="contact-value">{{ tr.value_address }}</span>
                             </div>
                         </li>
                         <li>
                             <i class="bi bi-telephone"></i>
                             <div>
-                                <span class="contact-label">Телефон</span>
+                                <span class="contact-label">{{ tr.label_phone }}</span>
                                 <a class="contact-value" href="tel:+77055165177">+7 (705) 516-51-77</a>
+                                <a class="contact-value" href="tel:+77077006627">+7 (707) 700-66-27</a>
                             </div>
                         </li>
                         <li>
                             <i class="bi bi-whatsapp"></i>
                             <div>
-                                <span class="contact-label">WhatsApp</span>
-                                <!-- Замените номер на актуальный в формате 77XXXXXXXXX -->
+                                <span class="contact-label">{{ tr.label_whatsapp }}</span>
                                 <a class="contact-value"
                                    href="https://wa.me/77055165177"
                                    target="_blank" rel="noopener">
-                                    Написать в WhatsApp
+                                    {{ tr.write_whatsapp }}
+                                </a>
+                                <a class="contact-value"
+                                   href="https://wa.me/77077006627"
+                                   target="_blank" rel="noopener">
+                                    {{ tr.write_whatsapp }}
                                 </a>
                             </div>
                         </li>
@@ -390,37 +280,64 @@
                         <li>
                             <i class="bi bi-chat-dots"></i>
                             <div>
-                                <span class="contact-label">WeChat</span>
-                                <!-- Замените your_wechat_id на реальный ID -->
-                                <span class="contact-value">ID: your_wechat_id</span>
+                                <span class="contact-label">{{ tr.label_wechat }}</span>
+                                <span class="contact-value">{{ tr.wechat_id_prefix }} Profit_bus1</span>
                             </div>
                         </li>
                         <li>
                             <i class="bi bi-envelope"></i>
                             <div>
-                                <span class="contact-label">Email</span>
+                                <span class="contact-label">{{ tr.label_email }}</span>
                                 <a class="contact-value" href="mailto:info@profit-bus.kz">info@profit-bus.kz</a>
                             </div>
                         </li>
                     </ul>
+                    <!-- НОВЫЙ БЛОК: Статические QR-коды WhatsApp и WeChat -->
+                    <div class="qr-codes-section mt-4 pt-3">
+                        <h5 class="qr-title mb-3">{{ tr.contact_via_messengers }}</h5>
+                        <div class="d-flex flex-wrap gap-4">
+                            <!-- WhatsApp QR - статическое изображение -->
+                            <div class="qr-item text-center">
+                                <div class="qr-code-whatsapp mb-2">
+                                    <img src="{% static 'main/images/whatsapp-qr.png' %}"
+                                         alt="WhatsApp QR Profit Bus"
+                                         class="img-fluid rounded"
+                                         style="width: 200px; height: 200px;"
+                                         loading="lazy">
+                                </div>
+                                <span class="qr-label">{{ tr.messenger_whatsapp }}</span>
+                            </div>
 
+                            <!-- WeChat QR - статическое изображение -->
+                            <div class="qr-item text-center">
+                                <div class="qr-code-wechat mb-2">
+                                    <img src="{% static 'main/images/wechat-qr.png' %}"
+                                         alt="WeChat QR Profit Bus"
+                                         class="img-fluid rounded"
+                                         style="width: 200px; height: 200px;"
+                                         loading="lazy">
+                                </div>
+                                <span class="qr-label">{{ tr.messenger_wechat }}</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="d-flex flex-wrap gap-3 mt-4">
                         <a href="tel:+77055165177" class="btn btn-primary btn-lg">
-                            Позвонить
+                            {{ tr.btn_call }}
                         </a>
                         <a href="https://wa.me/77055165177" target="_blank" rel="noopener"
                            class="btn btn-outline-light btn-lg">
-                            Написать в WhatsApp
+                            {{ tr.btn_whatsapp }}
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-lg copy-wechat" data-wechat-id="Profit_bus1">
+                            {{ tr.btn_wechat }}
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-7 reveal delay-1">
                     <div class="map-wrapper">
-                        <!-- Пример iframe карты Астаны. Можно заменить на ваш embed-код из Google Maps -->
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d625.2133369441602!2d71.47065126968666!3d51.18492583885016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTHCsDExJzA1LjciTiA3McKwMjgnMTYuNyJF!5e0!3m2!1sru!2skz!4v1770986537520!5m2!1sru!2skz"
-                            width="750" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <!-- Вместо iframe теперь будет контейнер для карты 2ГИС -->
+                        <div id="map-2gis" style="width:100%; height:400px; border-radius: 16px;"></div>
                     </div>
                 </div>
             </div>
@@ -432,7 +349,7 @@
 <footer class="footer">
     <div class="container text-center">
         <span class="footer-text">
-            © 2026 PROFIT – Bus Repair Parts Service. Все права защищены.
+            {{ tr.footer_rights }}
         </span>
     </div>
 </footer>
@@ -444,5 +361,27 @@
 
 <!-- Custom JS -->
 <script src="{% static 'main/js/script.js' %}"></script>
+
+<script>
+    // Ждем загрузки API
+    DG.then(function() {
+        // Создаем карту внутри контейнера с id="map-2gis"
+        var map = DG.map('map-2gis', {
+            // Координаты центра: [широта, долгота]
+            center: [51.184923, 71.471277],
+            // Масштаб (подберите подходящий)
+            zoom: 17,
+            // Опционально: убираем стандартные кнопки, если мешают
+            // fullscreenControl: false,
+            // geoclickerControl: false
+        });
+
+        // Добавляем маркер на карту
+        DG.marker([51.184923, 71.471277])
+            .addTo(map)
+            // Всплывающая подсказка при клике на маркер
+            .bindPopup('<div class="custom-popup"><h4>PROFIT</h4><p><strong>Адрес:</strong> Акжол 51/2</p><p>Наш офис</p></div>');
+    });
+</script>
 </body>
 </html>

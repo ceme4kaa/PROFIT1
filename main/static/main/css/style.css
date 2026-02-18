@@ -661,7 +661,7 @@ body {
     }
 
     .footer {
-        text-align: right;
+        text-align: center;
     }
 }
 
@@ -685,4 +685,66 @@ body {
     filter: grayscale(0%);
     opacity: 1;
     transform: translateY(-2px);
+}
+
+/* Стили для QR-кодов */
+.qr-codes-section {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.qr-title {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.qr-item {
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.qr-item:hover {
+    transform: translateY(-5px);
+}
+
+.qr-code-whatsapp img,
+.qr-code-wechat img {
+    background: #fff;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.qr-item:hover img {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.qr-label {
+    color: #fff !important;  /* Текст стал белым */
+    font-size: 0.85rem;
+    display: block;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.qr-item:hover .qr-label {
+    opacity: 1;
+}
+
+.qr-hint {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+}
+
+.qr-hint i {
+    color: rgba(255,255,255,0.5);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 576px) {
+    .qr-codes-section .d-flex {
+        justify-content: center;
+    }
 }

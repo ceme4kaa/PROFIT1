@@ -52,4 +52,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Copy WeChat ID button
+    const copyWeChatBtn = document.querySelector('.copy-wechat');
+    if (copyWeChatBtn) {
+        copyWeChatBtn.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const id = copyWeChatBtn.getAttribute('data-wechat-id') || '';
+            if (!id) return;
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(id);
+                    alert(`WeChat ID copied: ${id}`);
+                } else {
+                    const ta = document.createElement('textarea');
+                    ta.value = id;
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.focus();
+                    ta.select();
+                    document.execCommand('copy');
+                    ta.remove();
+                    alert(`WeChat ID copied: ${id}`);
+                }
+            } catch (_) {
+                alert(`WeChat ID: ${id}`);
+            }
+        });
+    }
 });

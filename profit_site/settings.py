@@ -4,9 +4,14 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-change-this-secret-key'
+
 DEBUG = True
 
-ALLOWED_HOSTS: list[str] = []
+ALLOWED_HOSTS = ['zhanaidarovv.pythonanywhere.com',
+                 'www.profit-bus.kz',
+                 '127.0.0.1',
+                 'localhost',
+                 ]
 
 
 INSTALLED_APPS = [
