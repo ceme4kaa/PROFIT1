@@ -4,8 +4,8 @@ SUPPORTED_LANGS = ("ru", "kk", "en", "zh")
 # without additional tooling. Text is injected into templates via context.
 
 LANG_SWITCH = (
-    {"code": "ru", "label": "RU"},
     {"code": "kk", "label": "KZ"},
+    {"code": "ru", "label": "RU"},
     {"code": "en", "label": "EN"},
     {"code": "zh", "label": "中文"},
 )
@@ -31,6 +31,7 @@ TRANSLATIONS = {
         "meta_keywords": "автозапчасти для автобусов Астана, Yutong, Iveco, King Long, Golden Dragon, Higer, PROFIT Bus Repair Parts Service",
         "og_title": "PROFIT – Bus Repair Parts Service",
         "og_description": "Автозапчасти для автобусов в Астане. Оригинальные и аналоговые запчасти, быстрая поставка, консультация специалистов.",
+        "nav_home": "Главная",
         "nav_about": "О компании",
         "nav_advantages": "Преимущества",
         "nav_contacts": "Контакты",
@@ -46,6 +47,9 @@ TRANSLATIONS = {
         "hero_list_1": "Работа с оптовыми и розничными клиентами",
         "hero_list_2": "Подбор по VIN и каталожным номерам",
         "hero_list_3": "Индивидуальные условия для автопарков",
+        "hero_card_list_1": "Двигатель, трансмиссия, тормозы и подвеска",
+        "hero_card_list_2": "Электрика, кузовные элементы и расходные материалы",
+        "hero_card_list_3": "Склад в Астане и доставка по Казахстану",
         "about_title": "О компании PROFIT",
         "about_subtitle": "PROFIT – Bus Repair Parts Service специализируется на поставке автозапчастей для городских и междугородних автобусов в Астане и по всему Казахстану.",
         "about_p1": "Мы работаем напрямую с проверенными поставщиками и производителями, что позволяет предлагать как оригинальные, так и качественные аналоговые запчасти. Наши специалисты помогут подобрать компоненты под конкретную модель автобуса с учётом условий эксплуатации и бюджета.",
@@ -82,6 +86,7 @@ TRANSLATIONS = {
         "messenger_whatsapp": "WhatsApp",
         "messenger_wechat": "WeChat",
         "scan_qr_hint": "Наведите камеру телефона для быстрой связи",
+        "map_popup_office": "Наш офис",
     },
     "kk": {
         "meta_title": "PROFIT – Bus Repair Parts Service | Астанадағы автобустарға арналған қосалқы бөлшектер",
@@ -89,6 +94,7 @@ TRANSLATIONS = {
         "meta_keywords": "Астана автобус қосалқы бөлшектері, Yutong, Iveco, King Long, Golden Dragon, Higer, PROFIT Bus Repair Parts Service",
         "og_title": "PROFIT – Bus Repair Parts Service",
         "og_description": "Астанада автобустарға арналған қосалқы бөлшектер. Түпнұсқа және балама бөлшектер, жедел жеткізу, мамандар кеңесі.",
+        "nav_home": "Басты бет",
         "nav_about": "Компания туралы",
         "nav_advantages": "Артықшылықтар",
         "nav_contacts": "Байланыс",
@@ -104,6 +110,9 @@ TRANSLATIONS = {
         "hero_list_1": "Көтерме және бөлшек клиенттермен жұмыс",
         "hero_list_2": "VIN және каталог нөмірлері бойынша іріктеу",
         "hero_list_3": "Автопарктерге арналған жеке шарттар",
+        "hero_card_list_1": "Қозғалтқыш, трансмиссия, тежеу және аспа",
+        "hero_card_list_2": "Электр жабдықтары, кузов бөлшектері және тұтыну материалдары",
+        "hero_card_list_3": "Астанада қойма және Қазақстан бойынша жеткізу",
         "about_title": "PROFIT компаниясы туралы",
         "about_subtitle": "PROFIT – Bus Repair Parts Service Астанада және Қазақстан бойынша қалалық және қалааралық автобустарға арналған қосалқы бөлшектерді жеткізуге маманданған.",
         "about_p1": "Біз сенімді жеткізушілермен және өндірушілермен тікелей жұмыс істейміз, бұл түпнұсқа да, сапалы балама да бөлшектерді ұсынуға мүмкіндік береді. Мамандарымыз пайдалану шарттары мен бюджетке сай нақты автобус моделіне компоненттерді таңдауға көмектеседі.",
@@ -140,6 +149,7 @@ TRANSLATIONS = {
         "messenger_whatsapp": "WhatsApp",
         "messenger_wechat": "WeChat",
         "scan_qr_hint": "Жылдам байланысу үшін телефон камерасын бағыттаңыз",
+        "map_popup_office": "Біздің офис",
     },
     "en": {
         "meta_title": "PROFIT – Bus Repair Parts Service | Bus spare parts in Astana",
@@ -147,6 +157,7 @@ TRANSLATIONS = {
         "meta_keywords": "bus parts Astana, Yutong, Iveco, King Long, Golden Dragon, Higer, PROFIT Bus Repair Parts Service",
         "og_title": "PROFIT – Bus Repair Parts Service",
         "og_description": "Bus spare parts in Astana. Genuine and aftermarket parts, fast delivery, expert consultation.",
+        "nav_home": "Home",
         "nav_about": "About",
         "nav_advantages": "Advantages",
         "nav_contacts": "Contacts",
@@ -162,6 +173,9 @@ TRANSLATIONS = {
         "hero_list_1": "Wholesale and retail service",
         "hero_list_2": "Selection by VIN and part numbers",
         "hero_list_3": "Custom terms for fleets",
+        "hero_card_list_1": "Engine, transmission, brakes and suspension",
+        "hero_card_list_2": "Electrical, body parts and consumables",
+        "hero_card_list_3": "Stock in Astana and delivery across Kazakhstan",
         "about_title": "About PROFIT",
         "about_subtitle": "PROFIT – Bus Repair Parts Service specializes in supplying bus spare parts in Astana and across Kazakhstan.",
         "about_p1": "We work directly with trusted suppliers and manufacturers, offering both genuine parts and high-quality equivalents. Our specialists will help you choose the right components for your bus model, operating conditions and budget.",
@@ -198,6 +212,7 @@ TRANSLATIONS = {
         "messenger_whatsapp": "WhatsApp",
         "messenger_wechat": "WeChat",
         "scan_qr_hint": "Point your phone camera for quick contact",
+        "map_popup_office": "Our office",
     },
     "zh": {
         "meta_title": "PROFIT – Bus Repair Parts Service | 阿斯塔纳公交车配件",
@@ -205,6 +220,7 @@ TRANSLATIONS = {
         "meta_keywords": "阿斯塔纳 公交车 配件, Yutong, Iveco, King Long, Golden Dragon, Higer, PROFIT",
         "og_title": "PROFIT – Bus Repair Parts Service",
         "og_description": "阿斯塔纳公交车配件：原厂与替代件，交付快速，专业咨询。",
+        "nav_home": "首页",
         "nav_about": "关于我们",
         "nav_advantages": "优势",
         "nav_contacts": "联系方式",
@@ -220,6 +236,9 @@ TRANSLATIONS = {
         "hero_list_1": "支持批发与零售",
         "hero_list_2": "按 VIN 与零件号选型",
         "hero_list_3": "车队专属合作方案",
+        "hero_card_list_1": "发动机、变速箱、制动与悬挂系统",
+        "hero_card_list_2": "电气、车身件与耗材",
+        "hero_card_list_3": "阿斯塔纳仓储，哈萨克斯坦全境配送",
         "about_title": "关于 PROFIT",
         "about_subtitle": "PROFIT – Bus Repair Parts Service 专注于在阿斯塔纳及哈萨克斯坦范围内供应公交车配件。",
         "about_p1": "我们与可靠供应商与制造商直接合作，可提供原厂件与高品质替代件。我们的专家将根据车型、工况与预算帮助您选择合适零件。",
@@ -256,6 +275,7 @@ TRANSLATIONS = {
         "messenger_whatsapp": "WhatsApp",
         "messenger_wechat": "WeChat",
         "scan_qr_hint": "将手机摄像头对准目标，以便快速联系。",
+        "map_popup_office": "我们的办公室",
     },
 }
 

@@ -2,339 +2,279 @@
 <!DOCTYPE html>
 <html lang="{{ html_lang }}">
 <head>
-    <!-- SEO базовые мета-теги -->
     <meta charset="UTF-8">
     <title>{{ tr.meta_title }}</title>
     <meta name="description" content="{{ tr.meta_description }}">
     <meta name="keywords" content="{{ tr.meta_keywords }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="profit-base-path" content="{{ site_base }}">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="{{ tr.og_title }}">
     <meta property="og:description" content="{{ tr.og_description }}">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="{{ og_locale }}">
 
-    <!-- Favicon -->
     <link rel="icon" href="{% static 'main/images/favicon.jpg' %}" type="image/x-icon">
 
-    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-          crossorigin="anonymous">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
-
     <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
 </head>
 <body>
 
-<!-- Навигация -->
-<header class="main-header fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent px-3">
-        <a class="navbar-brand d-flex align-items-center" href="#hero">
-            <img src="{% static 'main/images/logo.jpg' %}" alt="PROFIT Logo" class="logo me-2">
-            <span class="brand-text">PROFIT</span>
+<header class="site-header" id="site-header">
+    <div class="header-inner">
+        <a class="header-brand" href="#hero">
+            <img src="{% static 'main/images/logo.jpg' %}" alt="PROFIT" class="header-logo">
+            <span class="header-brand-text">PROFIT</span>
         </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Переключить навигацию">
-            <span class="navbar-toggler-icon"></span>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav align-items-lg-center">
-                <li class="nav-item"><a class="nav-link" href="#about">{{ tr.nav_about }}</a></li>
-                <li class="nav-item"><a class="nav-link" href="#advantages">{{ tr.nav_advantages }}</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contacts">{{ tr.nav_contacts }}</a></li>
+        <nav class="header-nav" id="header-nav">
+            <a href="#hero" class="nav-link" data-i18n="nav_home">{{ tr.nav_home }}</a>
+            <a href="#about" class="nav-link" data-i18n="nav_about">{{ tr.nav_about }}</a>
+            <a href="#advantages" class="nav-link" data-i18n="nav_advantages">{{ tr.nav_advantages }}</a>
+            <a href="#contacts" class="nav-link" data-i18n="nav_contacts">{{ tr.nav_contacts }}</a>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ tr.lang_label }}
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        {% for item in lang_switch %}
-                            <li>
-                                <a class="dropdown-item {% if lang == item.code %}active{% endif %}" href="/{{ item.code }}/">
-                                    {{ item.label }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li class="nav-item ms-lg-3">
-                    <a class="btn btn-primary btn-sm contact-btn" href="#contacts">{{ tr.nav_contact_btn }}</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <div class="lang-pills" role="group" id="lang-pills" aria-label="{{ tr.lang_label }}">
+                {% for item in lang_switch %}
+                    <button type="button"
+                            class="lang-pill {% if lang == item.code %}active{% endif %}"
+                            data-lang="{{ item.code }}"
+                            aria-current="{% if lang == item.code %}true{% else %}false{% endif %}">{{ item.label }}</button>
+                {% endfor %}
+            </div>
+
+            <a href="#contacts" class="btn btn-primary btn-sm" data-i18n="nav_contact_btn">{{ tr.nav_contact_btn }}</a>
+        </nav>
+    </div>
 </header>
 
 <main>
-    <!-- HERO -->
-    <section id="hero" class="hero-section d-flex align-items-center">
+    <section id="hero" class="hero">
+        <div class="hero-bg">
+            <div class="hero-bg-image">
+                <img src="{% static 'main/images/warehouse.jpg' %}" alt="" class="hero-bg-photo" fetchpriority="high">
+            </div>
+            <div class="hero-bg-gradient"></div>
+            <div class="hero-grid"></div>
+        </div>
+
+        <div class="container hero-content reveal">
+            <p class="section-label" data-i18n="hero_label">{{ tr.hero_label }}</p>
+            <h1 class="hero-title" data-i18n="hero_title">{{ tr.hero_title }}</h1>
+            <p class="hero-lead" data-i18n="hero_subtitle">{{ tr.hero_subtitle }}</p>
+
+            <div class="hero-pills">
+                <span class="pill" data-i18n="hero_list_1">{{ tr.hero_list_1 }}</span>
+                <span class="pill" data-i18n="hero_list_2">{{ tr.hero_list_2 }}</span>
+                <span class="pill" data-i18n="hero_list_3">{{ tr.hero_list_3 }}</span>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#contacts" class="btn btn-primary btn-lg" data-i18n="hero_btn_contact">{{ tr.hero_btn_contact }}</a>
+                <a href="tel:+77055165177" class="btn btn-ghost btn-lg" data-i18n="hero_btn_call">{{ tr.hero_btn_call }}</a>
+            </div>
+
+            <p class="hero-note" data-i18n="hero_note">{{ tr.hero_note }}</p>
+        </div>
+
+        <div class="hero-visual reveal delay-1">
+            <div class="hero-card">
+                <div class="hero-card-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22M6 18v2M18 18v2M8 6V4M16 6V4"/></svg>
+                </div>
+                <h2 class="hero-card-title" data-i18n="hero_card_title">{{ tr.hero_card_title }}</h2>
+                <p class="hero-card-text" data-i18n="hero_card_text">{{ tr.hero_card_text }}</p>
+                <ul class="hero-card-list">
+                    <li><span class="check-icon"></span><span data-i18n="hero_card_list_1">{{ tr.hero_card_list_1 }}</span></li>
+                    <li><span class="check-icon"></span><span data-i18n="hero_card_list_2">{{ tr.hero_card_list_2 }}</span></li>
+                    <li><span class="check-icon"></span><span data-i18n="hero_card_list_3">{{ tr.hero_card_list_3 }}</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section section-about">
         <div class="container">
-            <div class="row align-items-center gy-4">
-                <div class="col-lg-6 reveal">
-                    <div class="hero-label mb-3">
-                        {{ tr.hero_label }}
+            <div class="section-header reveal">
+                <p class="section-label" data-i18n="nav_about">{{ tr.nav_about }}</p>
+                <h2 class="section-title" data-i18n="about_title">{{ tr.about_title }}</h2>
+                <p class="section-lead" data-i18n="about_subtitle">{{ tr.about_subtitle }}</p>
+            </div>
+
+            <div class="about-layout">
+                <div class="about-copy reveal">
+                    <p data-i18n="about_p1">{{ tr.about_p1 }}</p>
+                    <p data-i18n="about_p2">{{ tr.about_p2 }}</p>
+                </div>
+                <div class="metrics-grid reveal delay-1">
+                    <div class="metric-card">
+                        <span class="metric-value">10+</span>
+                        <span class="metric-label" data-i18n="about_metric_1" data-i18n-html="true">{{ tr.about_metric_1|safe }}</span>
                     </div>
-                    <h1 class="hero-title mb-3">
-                        {{ tr.hero_title }}
-                    </h1>
-                    <p class="hero-subtitle mb-4">
-                        {{ tr.hero_subtitle }}
-                    </p>
-                    <div class="hero-actions d-flex flex-wrap align-items-center gap-3">
-                        <a href="#contacts" class="btn btn-primary btn-lg">
-                            {{ tr.hero_btn_contact }}
-                        </a>
-                        <a href="tel:+77000000000" class="btn btn-outline-light btn-lg">
-                            {{ tr.hero_btn_call }}
-                        </a>
+                    <div class="metric-card">
+                        <span class="metric-value">5+</span>
+                        <span class="metric-label" data-i18n="about_metric_2" data-i18n-html="true">{{ tr.about_metric_2|safe }}</span>
                     </div>
-                    <div class="hero-note mt-3">
-                        {{ tr.hero_note }}
+                    <div class="metric-card">
+                        <span class="metric-value">24/7</span>
+                        <span class="metric-label" data-i18n="about_metric_3" data-i18n-html="true">{{ tr.about_metric_3|safe }}</span>
                     </div>
                 </div>
-                <div class="col-lg-6 reveal delay-1">
-                    <div class="hero-card position-relative">
-                        <div class="hero-card-bg"></div>
-                        <div class="hero-card-content">
-                            <div class="hero-icon">
-                                <i class="bi bi-bus-front"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages" class="section section-advantages">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label" data-i18n="nav_advantages">{{ tr.nav_advantages }}</p>
+                <h2 class="section-title" data-i18n="adv_title">{{ tr.adv_title }}</h2>
+                <p class="section-lead" data-i18n="adv_subtitle">{{ tr.adv_subtitle }}</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 data-i18n="adv_1_title">{{ tr.adv_1_title }}</h3>
+                    <p data-i18n="adv_1_text">{{ tr.adv_1_text }}</p>
+                </div>
+                <div class="feature-card reveal delay-1">
+                    <div class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    </div>
+                    <h3 data-i18n="adv_2_title">{{ tr.adv_2_title }}</h3>
+                    <p data-i18n="adv_2_text">{{ tr.adv_2_text }}</p>
+                </div>
+                <div class="feature-card reveal delay-2">
+                    <div class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3 data-i18n="adv_3_title">{{ tr.adv_3_title }}</h3>
+                    <p data-i18n="adv_3_text">{{ tr.adv_3_text }}</p>
+                </div>
+                <div class="feature-card reveal delay-3">
+                    <div class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 data-i18n="adv_4_title">{{ tr.adv_4_title }}</h3>
+                    <p data-i18n="adv_4_text">{{ tr.adv_4_text }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-band">
+        <div class="container reveal">
+            <blockquote class="cta-quote" data-i18n="about_p2">{{ tr.about_p2 }}</blockquote>
+            <a href="#contacts" class="btn btn-primary" data-i18n="hero_btn_contact">{{ tr.hero_btn_contact }}</a>
+        </div>
+    </section>
+
+    <section id="contacts" class="section section-contacts">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label" data-i18n="nav_contacts">{{ tr.nav_contacts }}</p>
+                <h2 class="section-title" data-i18n="contacts_title">{{ tr.contacts_title }}</h2>
+                <p class="section-lead" data-i18n="contacts_subtitle">{{ tr.contacts_subtitle }}</p>
+            </div>
+
+            <div class="contacts-layout">
+                <div class="contacts-info reveal">
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             </div>
-                            <h2 class="hero-card-title">{{ tr.hero_card_title }}</h2>
-                            <p class="hero-card-text">
-                                {{ tr.hero_card_text }}
-                            </p>
-                            <ul class="hero-list">
-                                <li><i class="bi bi-check-circle-fill"></i> {{ tr.hero_list_1 }}</li>
-                                <li><i class="bi bi-check-circle-fill"></i> {{ tr.hero_list_2 }}</li>
-                                <li><i class="bi bi-check-circle-fill"></i> {{ tr.hero_list_3 }}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Декоративные акценты -->
-        <div class="hero-shape hero-shape-1"></div>
-        <div class="hero-shape hero-shape-2"></div>
-        <div class="hero-shape hero-shape-3"></div>
-    </section>
-
-    <!-- О компании -->
-    <section id="about" class="section-padding bg-light">
-        <div class="container">
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-8 text-center reveal">
-                    <h2 class="section-title">{{ tr.about_title }}</h2>
-                    <p class="section-subtitle">
-                        {{ tr.about_subtitle }}
-                    </p>
-                </div>
-            </div>
-            <div class="row align-items-center gy-4">
-                <div class="col-md-6 reveal">
-                    <p class="about-text">
-                        {{ tr.about_p1 }}
-                    </p>
-                    <p class="about-text">
-                        {{ tr.about_p2 }}
-                    </p>
-                </div>
-                <div class="col-md-6 reveal delay-1">
-                    <div class="about-highlight">
-                        <div class="about-highlight-item">
-                            <span class="about-number">10+</span>
-                            <span class="about-label">{{ tr.about_metric_1|safe }}</span>
-                        </div>
-                        <div class="about-highlight-item">
-                            <span class="about-number">5+</span>
-                            <span class="about-label">{{ tr.about_metric_2|safe }}</span>
-                        </div>
-                        <div class="about-highlight-item">
-                            <span class="about-number">24/7</span>
-                            <span class="about-label">{{ tr.about_metric_3|safe }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Преимущества -->
-    <section id="advantages" class="section-padding">
-        <div class="container">
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-8 text-center reveal">
-                    <h2 class="section-title">{{ tr.adv_title }}</h2>
-                    <p class="section-subtitle">
-                        {{ tr.adv_subtitle }}
-                    </p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3 reveal">
-                    <div class="adv-card">
-                        <div class="adv-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                        <h3 class="adv-title">{{ tr.adv_1_title }}</h3>
-                        <p class="adv-text">
-                            {{ tr.adv_1_text }}
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 reveal delay-1">
-                    <div class="adv-card">
-                        <div class="adv-icon">
-                            <i class="bi bi-calendar2-check"></i>
-                        </div>
-                        <h3 class="adv-title">{{ tr.adv_2_title }}</h3>
-                        <p class="adv-text">
-                            {{ tr.adv_2_text }}
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 reveal delay-2">
-                    <div class="adv-card">
-                        <div class="adv-icon">
-                            <i class="bi bi-currency-dollar"></i>
-                        </div>
-                        <h3 class="adv-title">{{ tr.adv_3_title }}</h3>
-                        <p class="adv-text">
-                            {{ tr.adv_3_text }}
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 reveal delay-3">
-                    <div class="adv-card">
-                        <div class="adv-icon">
-                            <i class="bi bi-people"></i>
-                        </div>
-                        <h3 class="adv-title">{{ tr.adv_4_title }}</h3>
-                        <p class="adv-text">
-                            {{ tr.adv_4_text }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты -->
-    <section id="contacts" class="section-padding contacts-section">
-        <div class="container">
-            <div class="row gy-4 align-items-stretch">
-                <div class="col-lg-5 reveal">
-                    <h2 class="section-title mb-3">{{ tr.contacts_title }}</h2>
-                    <p class="section-subtitle mb-4">
-                        {{ tr.contacts_subtitle }}
-                    </p>
-
-                    <ul class="contact-list">
-                        <li>
-                            <i class="bi bi-geo-alt"></i>
                             <div>
-                                <span class="contact-label">{{ tr.label_address }}</span>
-                                <span class="contact-value">{{ tr.value_address }}</span>
+                                <span class="contact-label" data-i18n="label_address">{{ tr.label_address }}</span>
+                                <span class="contact-value" data-i18n="value_address">{{ tr.value_address }}</span>
                             </div>
-                        </li>
-                        <li>
-                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
                             <div>
-                                <span class="contact-label">{{ tr.label_phone }}</span>
+                                <span class="contact-label" data-i18n="label_phone">{{ tr.label_phone }}</span>
                                 <a class="contact-value" href="tel:+77055165177">+7 (705) 516-51-77</a>
                                 <a class="contact-value" href="tel:+77077006627">+7 (707) 700-66-27</a>
                             </div>
-                        </li>
-                        <li>
-                            <i class="bi bi-whatsapp"></i>
-                            <div>
-                                <span class="contact-label">{{ tr.label_whatsapp }}</span>
-                                <a class="contact-value"
-                                   href="https://wa.me/77055165177"
-                                   target="_blank" rel="noopener">
-                                    {{ tr.write_whatsapp }}
-                                </a>
-                                <a class="contact-value"
-                                   href="https://wa.me/77077006627"
-                                   target="_blank" rel="noopener">
-                                    {{ tr.write_whatsapp }}
-                                </a>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                             </div>
-                        </li>
-                        <!-- НОВЫЙ ПУНКТ: WeChat -->
-                        <li>
-                            <i class="bi bi-chat-dots"></i>
                             <div>
-                                <span class="contact-label">{{ tr.label_wechat }}</span>
-                                <span class="contact-value">{{ tr.wechat_id_prefix }} Profit_bus1</span>
+                                <span class="contact-label" data-i18n="label_whatsapp">{{ tr.label_whatsapp }}</span>
+                                <a class="contact-value" href="https://wa.me/77055165177" target="_blank" rel="noopener" data-i18n="write_whatsapp">{{ tr.write_whatsapp }}</a>
+                                <a class="contact-value" href="https://wa.me/77077006627" target="_blank" rel="noopener" data-i18n="write_whatsapp">{{ tr.write_whatsapp }}</a>
                             </div>
-                        </li>
-                        <li>
-                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            </div>
                             <div>
-                                <span class="contact-label">{{ tr.label_email }}</span>
+                                <span class="contact-label" data-i18n="label_wechat">{{ tr.label_wechat }}</span>
+                                <span class="contact-value"><span data-i18n="wechat_id_prefix">{{ tr.wechat_id_prefix }}</span> Profit_bus1</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <span class="contact-label" data-i18n="label_email">{{ tr.label_email }}</span>
                                 <a class="contact-value" href="mailto:info@profit-bus.kz">info@profit-bus.kz</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- НОВЫЙ БЛОК: Статические QR-коды WhatsApp и WeChat -->
-                    <div class="qr-codes-section mt-4 pt-3">
-                        <h5 class="qr-title mb-3">{{ tr.contact_via_messengers }}</h5>
-                        <div class="d-flex flex-wrap gap-4">
-                            <!-- WhatsApp QR - статическое изображение -->
-                            <div class="qr-item text-center">
-                                <div class="qr-code-whatsapp mb-2">
-                                    <img src="{% static 'main/images/whatsapp-qr.png' %}"
-                                         alt="WhatsApp QR Profit Bus"
-                                         class="img-fluid rounded"
-                                         style="width: 200px; height: 200px;"
-                                         loading="lazy">
-                                </div>
-                                <span class="qr-label">{{ tr.messenger_whatsapp }}</span>
-                            </div>
-
-                            <!-- WeChat QR - статическое изображение -->
-                            <div class="qr-item text-center">
-                                <div class="qr-code-wechat mb-2">
-                                    <img src="{% static 'main/images/wechat-qr.png' %}"
-                                         alt="WeChat QR Profit Bus"
-                                         class="img-fluid rounded"
-                                         style="width: 200px; height: 200px;"
-                                         loading="lazy">
-                                </div>
-                                <span class="qr-label">{{ tr.messenger_wechat }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-wrap gap-3 mt-4">
-                        <a href="tel:+77055165177" class="btn btn-primary btn-lg">
-                            {{ tr.btn_call }}
-                        </a>
-                        <a href="https://wa.me/77055165177" target="_blank" rel="noopener"
-                           class="btn btn-outline-light btn-lg">
-                            {{ tr.btn_whatsapp }}
-                        </a>
+
+                    <div class="qr-section">
+                        <h3 class="qr-title" data-i18n="contact_via_messengers">{{ tr.contact_via_messengers }}</h3>
+                        <div class="qr-grid">
+                            <div class="qr-item">
+                                <div class="qr-frame">
+                                    <img src="{% static 'main/images/whatsapp-qr.png' %}"
+                                         alt="WhatsApp QR"
+                                         width="180" height="180"
+                                         loading="lazy">
+                                </div>
+                                <span class="qr-label" data-i18n="messenger_whatsapp">{{ tr.messenger_whatsapp }}</span>
+                            </div>
+                            <div class="qr-item">
+                                <div class="qr-frame">
+                                    <img src="{% static 'main/images/wechat-qr.png' %}"
+                                         alt="WeChat QR"
+                                         width="180" height="180"
+                                         loading="lazy">
+                                </div>
+                                <span class="qr-label" data-i18n="messenger_wechat">{{ tr.messenger_wechat }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-actions">
+                        <a href="tel:+77055165177" class="btn btn-primary" data-i18n="btn_call">{{ tr.btn_call }}</a>
+                        <a href="https://wa.me/77055165177" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="btn_whatsapp">{{ tr.btn_whatsapp }}</a>
                     </div>
                 </div>
-                <div class="col-lg-7 reveal delay-1">
+
+                <div class="contacts-map reveal delay-1">
                     <div class="map-wrapper">
-                        <!-- Вместо iframe теперь будет контейнер для карты 2ГИС -->
-                        <div id="map-2gis" style="width:100%; height:400px; border-radius: 16px;"></div>
+                        <div id="map-2gis"></div>
                     </div>
                 </div>
             </div>
@@ -342,43 +282,19 @@
     </section>
 </main>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="container text-center">
-        <span class="footer-text">
-            {{ tr.footer_rights }}
-        </span>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="{% static 'main/images/logo.jpg' %}" alt="PROFIT" class="footer-logo">
+                <span>PROFIT</span>
+            </div>
+            <p class="footer-copy" data-i18n="footer_rights">{{ tr.footer_rights }}</p>
+        </div>
     </div>
 </footer>
 
-<!-- Bootstrap Bundle JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-<!-- Custom JS -->
+{{ i18n_bundle|json_script:"profit-i18n" }}
 <script src="{% static 'main/js/script.js' %}"></script>
-
-<script>
-    // Ждем загрузки API
-    DG.then(function() {
-        // Создаем карту внутри контейнера с id="map-2gis"
-        var map = DG.map('map-2gis', {
-            // Координаты центра: [широта, долгота]
-            center: [51.184923, 71.471277],
-            // Масштаб (подберите подходящий)
-            zoom: 17,
-            // Опционально: убираем стандартные кнопки, если мешают
-            // fullscreenControl: false,
-            // geoclickerControl: false
-        });
-
-        // Добавляем маркер на карту
-        DG.marker([51.184923, 71.471277])
-            .addTo(map)
-            // Всплывающая подсказка при клике на маркер
-            .bindPopup('<div class="custom-popup"><h4>PROFIT</h4><p><strong>Адрес:</strong> Акжол 51/2</p><p>Наш офис</p></div>');
-    });
-</script>
 </body>
 </html>
