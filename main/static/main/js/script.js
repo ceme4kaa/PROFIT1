@@ -147,6 +147,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     initMap();
 
+    const mobileBackdrop = document.getElementById('mobile-nav-backdrop');
+
+    const setMobileMenuOpen = (open) => {
+        if (headerNav) headerNav.classList.toggle('open', open);
+        if (navToggle) {
+            navToggle.classList.toggle('open', open);
+            navToggle.setAttribute('aria-expanded', open);
+        }
+        if (mobileBackdrop) {
+            mobileBackdrop.classList.toggle('is-visible', open);
+            mobileBackdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+        document.body.style.overflow = open ? 'hidden' : '';
+    };
+
     const onScroll = () => {
         if (header) {
             header.classList.toggle('scrolled', window.scrollY > 20);
@@ -155,21 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    const fabContact = document.getElementById('fab-contact');
-
-    const setFabVisible = (visible) => {
-        if (fabContact) {
-            fabContact.classList.toggle('is-hidden', !visible);
-        }
-    };
-
     if (navToggle && headerNav) {
         navToggle.addEventListener('click', () => {
-            const open = headerNav.classList.toggle('open');
-            navToggle.classList.toggle('open', open);
-            navToggle.setAttribute('aria-expanded', open);
-            setFabVisible(!open);
+            setMobileMenuOpen(!headerNav.classList.contains('open'));
         });
+    }
+
+    if (mobileBackdrop) {
+        mobileBackdrop.addEventListener('click', () => setMobileMenuOpen(false));
     }
 
     const revealElements = document.querySelectorAll('.reveal');
@@ -205,10 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top, behavior: 'smooth' });
 
             if (headerNav && headerNav.classList.contains('open')) {
-                headerNav.classList.remove('open');
-                navToggle?.classList.remove('open');
-                navToggle?.setAttribute('aria-expanded', 'false');
-                setFabVisible(true);
+                setMobileMenuOpen(false);
             }
         });
     });

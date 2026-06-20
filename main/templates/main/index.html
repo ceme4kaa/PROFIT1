@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'main/css/style.css' %}?v=4">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}?v=7">
     <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
 </head>
 <body>
@@ -59,6 +59,8 @@
 </header>
 
 <a href="#contacts" class="fab-contact btn btn-primary" id="fab-contact" data-i18n="nav_contact_btn">{{ tr.nav_contact_btn }}</a>
+
+<div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
 
 <main>
     <section id="hero" class="hero">
@@ -297,6 +299,6 @@
 </footer>
 
 {{ i18n_bundle|json_script:"profit-i18n" }}
-<script src="{% static 'main/js/script.js' %}?v=3"></script>
+<script src="{% static 'main/js/script.js' %}?v=5"></script>
 </body>
 </html>
