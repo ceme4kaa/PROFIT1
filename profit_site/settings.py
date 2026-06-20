@@ -70,12 +70,19 @@ TIME_ZONE = 'Asia/Almaty'
 USE_I18N = True
 USE_TZ = True
 
+# GitHub Pages: SITE_BASE_PATH=/PROFIT1 (project site at username.github.io/PROFIT1/)
+_site_base = os.environ.get('SITE_BASE_PATH', '').strip().rstrip('/')
+SITE_BASE_PATH = f'/{_site_base.lstrip("/")}' if _site_base else ''
+
 # Настройки static
-STATIC_URL = 'static/'
+if SITE_BASE_PATH:
+    STATIC_URL = f'{SITE_BASE_PATH}/static/'
+else:
+    STATIC_URL = 'static/'
+
 # Дополнительные директории со статикой (по требованию)
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+_static_dir = BASE_DIR / 'static'
+STATICFILES_DIRS = [_static_dir] if _static_dir.is_dir() else []
 # Для collectstatic (на будущее)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
