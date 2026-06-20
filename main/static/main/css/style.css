@@ -250,6 +250,31 @@ a {
     box-shadow: 0 2px 8px rgba(242, 180, 0, 0.35);
 }
 
+/* Floating contact — mobile */
+.fab-contact {
+    display: none;
+    position: fixed;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    left: 16px;
+    right: 16px;
+    z-index: 900;
+    padding: 14px 24px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.35);
+    transition: transform var(--transition), opacity var(--transition), box-shadow var(--transition);
+}
+
+.fab-contact.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+}
+
+.fab-contact:active {
+    transform: scale(0.98);
+}
+
 /* Mobile nav toggle */
 .nav-toggle {
     display: none;
@@ -918,7 +943,11 @@ a.contact-value:hover {
     }
 
     .hero-visual {
-        order: -1;
+        order: 2;
+    }
+
+    .hero-content {
+        order: 1;
     }
 
     .hero-card {
@@ -949,6 +978,18 @@ a.contact-value:hover {
         --section-gap: 40px;
     }
 
+    body {
+        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .fab-contact {
+        display: inline-flex;
+    }
+
+    .header-contact-btn {
+        display: none !important;
+    }
+
     .nav-toggle {
         display: flex;
     }
@@ -958,17 +999,20 @@ a.contact-value:hover {
         top: var(--header-height);
         left: 0;
         right: 0;
-        background: rgba(11, 17, 32, 0.97);
+        bottom: 0;
+        background: rgba(11, 17, 32, 0.98);
         backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--border);
+        border-bottom: none;
         flex-direction: column;
         align-items: stretch;
-        padding: 16px 24px 24px;
-        gap: 4px;
+        justify-content: flex-start;
+        padding: 8px 24px 32px;
+        gap: 0;
         transform: translateY(-8px);
         opacity: 0;
         visibility: hidden;
         transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+        overflow-y: auto;
     }
 
     .header-nav.open {
@@ -978,12 +1022,48 @@ a.contact-value:hover {
     }
 
     .nav-link {
-        padding: 12px 14px;
+        padding: 14px 4px;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.92);
+        border-radius: 0;
     }
 
+    .nav-link:hover {
+        background: none;
+        color: #ffffff;
+    }
+
+    /* Language row at bottom of menu — Mirai layout, desktop colors */
     .lang-pills {
         width: 100%;
-        justify-content: center;
+        margin-top: 20px;
+        padding: 20px 0 0;
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 0;
+        background: none;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    .lang-pill {
+        min-width: auto;
+        padding: 8px 16px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.42);
+        border-radius: var(--radius-full);
+    }
+
+    .lang-pill:hover:not(.active) {
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    .lang-pill.active {
+        background: var(--accent);
+        color: var(--primary);
+        font-weight: 700;
+        box-shadow: 0 2px 8px rgba(242, 180, 0, 0.35);
     }
 
     .header-nav .btn {

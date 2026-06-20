@@ -155,11 +155,20 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
+    const fabContact = document.getElementById('fab-contact');
+
+    const setFabVisible = (visible) => {
+        if (fabContact) {
+            fabContact.classList.toggle('is-hidden', !visible);
+        }
+    };
+
     if (navToggle && headerNav) {
         navToggle.addEventListener('click', () => {
             const open = headerNav.classList.toggle('open');
             navToggle.classList.toggle('open', open);
             navToggle.setAttribute('aria-expanded', open);
+            setFabVisible(!open);
         });
     }
 
@@ -199,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headerNav.classList.remove('open');
                 navToggle?.classList.remove('open');
                 navToggle?.setAttribute('aria-expanded', 'false');
+                setFabVisible(true);
             }
         });
     });
