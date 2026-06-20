@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}?v=2">
     <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
 </head>
 <body>
@@ -295,6 +295,6 @@
 </footer>
 
 {{ i18n_bundle|json_script:"profit-i18n" }}
-<script src="{% static 'main/js/script.js' %}"></script>
+<script src="{% static 'main/js/script.js' %}?v=2"></script>
 </body>
 </html>

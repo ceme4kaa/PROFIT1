@@ -78,7 +78,7 @@ SITE_BASE_PATH = f'/{_site_base.lstrip("/")}' if _site_base else ''
 if SITE_BASE_PATH:
     STATIC_URL = f'{SITE_BASE_PATH}/static/'
 else:
-    STATIC_URL = 'static/'
+    STATIC_URL = '/static/'
 
 # Дополнительные директории со статикой (по требованию)
 _static_dir = BASE_DIR / 'static'
