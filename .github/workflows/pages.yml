@@ -34,7 +34,8 @@ jobs:
       - name: Build static site
         env:
           DJANGO_SETTINGS_MODULE: profit_site.settings
-          SITE_BASE_PATH: /PROFIT1
+          SITE_BASE_PATH: ""
+          GITHUB_PAGES_CNAME: www.profit-bus.kz
         run: python manage.py export_static
 
       - name: Setup Pages
