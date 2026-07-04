@@ -12,6 +12,7 @@ ROUTES = (
     ("en/index.html", "/en/"),
     ("zh/index.html", "/zh/"),
     ("yandex_5b9223d505b81cda.html", "/yandex_5b9223d505b81cda.html"),
+    ("google9873e2cf07eba082.html", "/google9873e2cf07eba082.html"),
 )
 
 
